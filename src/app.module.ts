@@ -10,9 +10,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     type:'mysql',
     host:'localhost',
     port: 3306,
-    username:'nest',
-    password:'password',
-    database:'tp1',
+    username:'nest_user',
+    password:'nest_pass',
+    database:'tp_nest',
     synchronize:true,
     autoLoadEntities:true
   })],

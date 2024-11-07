@@ -1,0 +1,21 @@
+services:
+  mysql:
+    image: mysql
+    container_name: mysql_db
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: tp_nest
+      MYSQL_USER: nest_user
+      MYSQL_PASSWORD: nest_pass
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - nest_network
+
+networks:
+  nest_network:
+
+volumes:
+  mysql_data:
