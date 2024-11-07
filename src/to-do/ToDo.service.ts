@@ -19,7 +19,7 @@ export class ToDoService {
 
     async AddToDo(ToDo:AddToDodto):Promise<ToDo>{
         const ToDO=this.ToDorepository.create({
-            name:ToDo.nvame,
+            name:ToDo.name,
             Description:ToDo.Description
         })
         return await this.ToDorepository.save(ToDO)
