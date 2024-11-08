@@ -1,33 +1,40 @@
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
-import { Status } from "./status.enum";
-
-
+import {
+  Column,
+  CreateDateColumn,
+  DeleteDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
+import { Status } from './status.enum';
 
 @Entity('ToDo')
 export class ToDo {
-    @PrimaryGeneratedColumn()
-    Id:number
+  @PrimaryGeneratedColumn()
+  Id: number;
 
-    @Column({nullable:false,length:10})
-    name:string
+  @Column({ nullable: false, length: 10 })
+  name: string;
 
-    @Column({length:250,nullable:false})
-    Description:string
+  @Column({ length: 250, nullable: false })
+  Description: string;
 
-    @CreateDateColumn({update:false})
-    Date:Date 
+  @CreateDateColumn({ update: false })
+  Date: Date;
 
-    @Column({
-        type:"enum",
-        enum:Status,
-        default:Status.inactive
+  @Column({
+    type: 'enum',
+    enum: Status,
+    default: Status.inactive,
+  })
+  Status: Status;
 
-    })
-    Status:Status
+  @Column()
+  userId: string;
 
-    @UpdateDateColumn()
-    UpdatedDate:Date
+  @UpdateDateColumn()
+  UpdatedDate: Date;
 
-    @DeleteDateColumn()
-    DeletedDate:Date
+  @DeleteDateColumn()
+  DeletedDate: Date;
 }
