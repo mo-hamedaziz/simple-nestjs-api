@@ -4,8 +4,8 @@ import { CvService } from './cv.service';
 import { CvController } from './cv.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Cv } from './entities/cv.entity';
-import { User } from 'src/user/entities/user.entity';
-import { Skill } from 'src/skill/entities/skill.entity';
+import { User } from '../user/entities/user.entity';
+import { Skill } from '../skill/entities/skill.entity';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Cv, User, Skill])],

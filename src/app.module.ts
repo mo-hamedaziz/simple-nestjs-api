@@ -11,7 +11,7 @@ import { AuthMiddleware } from './middlewares/auth.middleware';
 import { CvModule } from './cv/cv.module';
 import { SkillModule } from './skill/skill.module';
 import { UserModule } from './user/user.module';
-// import { SeedModule } from './seed/seed.module';
+import { SeedModule } from './seed/seed.module';
 // import { SeedService } from './seed/seed.service';
 
 @Module({
@@ -34,7 +34,7 @@ import { UserModule } from './user/user.module';
     CvModule,
     SkillModule,
     UserModule,
-    // SeedModule,
+    SeedModule,
   ],
   controllers: [AppController],
   providers: [AppService],

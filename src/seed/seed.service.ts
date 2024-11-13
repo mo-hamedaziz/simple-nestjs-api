@@ -3,9 +3,9 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { randUserName, randEmail, randPassword, randJobTitle, randFullName, randNumber, randText, rand } from '@ngneat/falso';
-import { User } from 'src/user/entities/user.entity';
-import { Cv } from 'src/cv/entities/cv.entity';
-import { Skill } from 'src/skill/entities/skill.entity';
+import { User } from '../user/entities/user.entity';
+import { Cv } from '../cv/entities/cv.entity';
+import { Skill } from '../skill/entities/skill.entity';
 
 @Injectable()
 export class SeedService {
