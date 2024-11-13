@@ -1,4 +1,5 @@
 /* eslint-disable prettier/prettier */
+// import { MiddlewareConsumer, Module, OnModuleInit } from '@nestjs/common';
 import { MiddlewareConsumer, Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -10,12 +11,14 @@ import { AuthMiddleware } from './middlewares/auth.middleware';
 import { CvModule } from './cv/cv.module';
 import { SkillModule } from './skill/skill.module';
 import { UserModule } from './user/user.module';
+// import { SeedModule } from './seed/seed.module';
+// import { SeedService } from './seed/seed.service';
 
 @Module({
   imports: [
     CommonModule,
     ConfigModule.forRoot({
-      isGlobal: true, // Makes config accessible globally
+      isGlobal: true, // For .env files to be accessibles globally
     }),
     ToDoModule,
     TypeOrmModule.forRoot({
@@ -31,12 +34,27 @@ import { UserModule } from './user/user.module';
     CvModule,
     SkillModule,
     UserModule,
+    // SeedModule,
   ],
   controllers: [AppController],
   providers: [AppService],
 })
+
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {
     consumer.apply(AuthMiddleware).forRoutes('todo'); 
   }
 }
+
+
+// export class AppModule implements OnModuleInit {
+//   constructor(private readonly seedService: SeedService) {}
+  
+//   configure(consumer: MiddlewareConsumer) {
+//     consumer.apply(AuthMiddleware).forRoutes('todo'); 
+//   }
+
+//   async onModuleInit() {
+//     await this.seedService.seed();
+//   }
+// }
