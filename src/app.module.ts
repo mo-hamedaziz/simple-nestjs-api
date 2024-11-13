@@ -7,6 +7,9 @@ import { ToDoModule } from './to-do/to-do.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { AuthMiddleware } from './middlewares/auth.middleware';
+import { CvModule } from './cv/cv.module';
+import { SkillModule } from './skill/skill.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -25,6 +28,9 @@ import { AuthMiddleware } from './middlewares/auth.middleware';
       synchronize: true,
       autoLoadEntities: true,
     }),
+    CvModule,
+    SkillModule,
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],
