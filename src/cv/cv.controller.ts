@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { CvService } from './cv.service';
 import { CreateCvDto } from './dto/create-cv.dto';
@@ -18,17 +19,17 @@ export class CvController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.cvService.findOne(+id);
+  findOne(@Param('id') id: number) {
+    return this.cvService.findOne(id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateCvDto: UpdateCvDto) {
-    return this.cvService.update(+id, updateCvDto);
+  update(@Param('id') id: number, @Body() updateCvDto: UpdateCvDto) {
+    return this.cvService.update(id, updateCvDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.cvService.remove(+id);
+  remove(@Param('id') id: number) {
+    return this.cvService.remove(id);
   }
 }
