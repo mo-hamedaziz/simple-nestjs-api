@@ -16,7 +16,6 @@ export class CvService {
     @InjectRepository(Skill) private skillRepository: Repository<Skill>,
   ) {}
 
-  // Create a new CV
   async create(createCvDto: CreateCvDto): Promise<Cv> {
     const { userId, skills, ...cvData } = createCvDto;
 
@@ -38,29 +37,25 @@ export class CvService {
       }
     }
 
-    // Create the CV entity
     const newCv = this.cvRepository.create({
       ...cvData,
       user,
       skills: skillEntities,
     });
-
-    // Save the CV
+    
     return await this.cvRepository.save(newCv);
   }
 
-  // Find all CVs
   async findAll(): Promise<Cv[]> {
     return await this.cvRepository.find({
-      relations: ['user', 'skills'], // Include related entities
+      relations: ['user', 'skills'],
     });
   }
 
-  // Find a single CV by ID
   async findOne(id: number): Promise<Cv> {
     const cv = await this.cvRepository.findOne({
       where: { id },
-      relations: ['user', 'skills'], // Include related entities
+      relations: ['user', 'skills'],
     });
 
     if (!cv) {
@@ -69,7 +64,6 @@ export class CvService {
     return cv;
   }
 
-  // Update a CV by ID
   async update(id: number, updateCvDto: UpdateCvDto): Promise<Cv> {
     const { userId, skills, ...updateData } = updateCvDto;
 
@@ -97,14 +91,12 @@ export class CvService {
       cv.skills = skillEntities;
     }
 
-    // Update other fields
+    // Update the other fields
     Object.assign(cv, updateData);
 
-    // Save the updated CV
     return await this.cvRepository.save(cv);
   }
 
-  // Delete a CV by ID
   async remove(id: number): Promise<void> {
     const result = await this.cvRepository.delete(id);
     if (result.affected === 0) {
