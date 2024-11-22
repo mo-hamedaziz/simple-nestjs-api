@@ -27,10 +27,10 @@ export class Cv {
   @Column()
   path: string;
 
-  @ManyToOne(() => User, (user) => user.cvs)
+  @ManyToOne(() => User, (user) => user.cvs, { nullable: true, onDelete: 'SET NULL' })
   user: User;
 
-  @ManyToMany(() => Skill, (skill) => skill.cvs)
+  @ManyToMany(() => Skill, (skill) => skill.cvs, { cascade: true })
   @JoinTable()
   skills: Skill[];
 }
